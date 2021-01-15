@@ -1,0 +1,169 @@
+<div class="container">
+  <div class="row card-row">
+    <div class="col-md-4 col-sm-12 item" style="text-align: center; padding-right: 30px;">
+      <div class="card item-card card-block infectedCardHover card-mobile-class  card-4" style="border: none;">
+        <div class="card-body card-body text-dark">
+          <h4 class="item-card-title" style="padding-left: 20px;">Confirmed Indian Cases</h4>
+          <h1>{{summary.confirmedCasesIndian}}</h1>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- <div class="col-md-3 col-sm-12 item" style="text-align: center;">
+      <div class="card item-card card-block border-primary" style="background-color: #ccddff;">
+        <div class="card-body card-body text-primary">
+          <h4 class="item-card-title" style="padding-left: 20px;">Confirmed Foreign Cases</h4>
+          <h1>{{summary.confirmedCasesForeign}}+{{summary.discharged}}-{{summary.deaths}}</h1>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="col-md-4 col-sm-12 item" style="text-align: center; padding-right: 30px;">
+      <div class="card item-card card-block RecoveredCardHover card-4" style="border: none;">
+        <div class="card-body card-body text-dark">
+          <h4 class="item-card-title" style="padding-left: 20px;">Recovered Cases</h4>
+          <h1>{{summary.discharged}}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-12 item" style="text-align: center; padding-right: 30px;">
+      <div class="card item-card card-block deathCardHover  card-4" style="border: none;">
+        <div class="card-body card-body text-dark">
+          <h4 class="item-card-title" style="padding-left: 20px;">Death</h4>
+          <h1>{{summary.deaths}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-12 col-sm-12 mobileDisplay" style="text-align: center; padding-top: 30px;">
+    <div style="display: block;">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabel" [options]="barChartOptions"
+        [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+      <h4 style="margin: 20px; color: grey;">India Covid-19 Trend</h4>
+    </div>
+
+  </div>
+
+
+</div>
+
+<div class="col-md-12 col-sm-12 bannerClass jumbotron jumbotron-fluid">
+  <div class="container" style="color: white;">
+    <h1 class="display-4">The COVID Tracking Project collects and publishes the most complete data about COVID-19 in
+      the INDIA.</h1>
+  </div>
+</div>
+
+<div class="col-md-12 col-sm-12 sunBannerClass" style="text-align: center; margin-bottom: 30px;">
+  <div class="container" style="padding: 20px; color: rgb(49, 47, 47);">
+    <h4 class="display-4 side-banner">State Wise Covid-19 Trend</h4>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-sm-12 " style="padding-top: 20px; padding-left: 20px;">
+      <table class="table table-bordered table-responsive-sm table-hover">
+        <thead>
+          <tr>
+            <th scope="col">State/UT</th>
+            <th scope="col">Confirmed</th>
+            <!-- <th scope="col">Active</th> -->
+            <th scope="col">Recovered</th>
+            <th scope="col">Deceased</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr (mouseover)="hoverDataTable(state)" *ngFor="let state of stateSummary">
+            <th scope="row">{{state.loc}}</th>
+            <td>{{state.confirmedCasesIndian}}</td>
+            <td>{{state.discharged}}</td>
+            <td>{{state.deaths}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+
+      <div class="row">
+
+        <div class="col-md-12 colsm-12">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Select State</label>
+            <select [(ngModel)]="selectedState" (change)="stateDropDownChange(selectedState)" class="form-control"
+              id="exampleFormControlSelect1">
+              <option *ngFor="let st of stateSummary" [value]="st.loc">{{st.loc}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-12 colsm-12">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 " style="text-align: center; padding: 4%;">
+              <div class="card item-card card-block border-danger text-danger">
+                <h4 class="item-card-title" style="padding-top: 10px;">{{stateDataInformation.loc}} Confirmed Cases</h4>
+                <h1 class="lineGraphHeader">{{stateDataInformation.totalConfirmed}}</h1>
+                <app-line-graph [lineCharData]="stateInfected" [lineChartLabels]="stateGraphLable"></app-line-graph>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-12 colsm-12">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 " style="text-align: center; padding: 4%;">
+              <div class="card item-card card-block border-primary text-primary">
+                <h4 class="item-card-title" style="padding-top: 10px;">{{stateDataInformation.loc}} Active Cases</h4>
+                <h1 class="lineGraphHeader">{{activeCases}}</h1>
+                <app-line-graph [colors]="activeLineChart" [lineCharData]="stateActive"
+                  [lineChartLabels]="stateGraphLable"></app-line-graph>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-12 colsm-12">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 " style="text-align: center; padding: 4%;">
+              <div class="card item-card card-block border-success text-success">
+                <h4 class="item-card-title" style="padding-top: 10px;">{{stateDataInformation.loc}} Recovered Cases</h4>
+                <h1 class="lineGraphHeader">{{stateDataInformation.discharged}}</h1>
+                <app-line-graph [colors]="recoveredLineChart" [lineCharData]="stateRecovered"
+                  [lineChartLabels]="stateGraphLable"></app-line-graph>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-12 colsm-12">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 " style="text-align: center; padding: 4%;">
+              <div class="card item-card card-block border-dark text-dark">
+                <h4 class="item-card-title" style="padding-top: 10px;">{{stateDataInformation.loc}} Deceased Cases</h4>
+                <h1 class="lineGraphHeader">{{stateDataInformation.deaths}}</h1>
+                <app-line-graph [colors]="deceasedLineChart" [lineCharData]="statetotalDeath"
+                  [lineChartLabels]="stateGraphLable"></app-line-graph>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

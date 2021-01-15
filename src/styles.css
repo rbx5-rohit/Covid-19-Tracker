@@ -1,0 +1,161 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+/* You can add global styles to this file, and also import other style files */
+
+.navbarCustomization {
+    background-color: #31347a;
+  }
+
+  .anchorColor {
+      color: white;
+  }
+
+  .navLinkPosition{
+    padding-right: 20%;
+  }
+
+
+  img{
+    height:150px;
+    width:100%;
+  }
+  
+  .item{
+    padding-left:5px;
+    padding-right:5px;
+  }
+  .item-card{
+    transition:0.5s;
+    cursor:pointer;
+  }
+  .item-card-title{  
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+  }
+  .item-card-title i{  
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+    color:#ffa710
+  }
+  .card-title i:hover{
+    transform: scale(1.25) rotate(100deg); 
+    color:#18d4ca;
+    
+  }
+  .card:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+  }
+  .card-text{
+    height:80px;  
+  }
+  
+  .card::before, .card::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale3d(0, 0, 1);
+    transition: transform .3s ease-out 0s;
+    background: rgba(255, 255, 255, 0.1);
+    content: '';
+    pointer-events: none;
+  }
+  .card::before {
+    transform-origin: left top;
+  }
+  .card::after {
+    transform-origin: right bottom;
+  }
+  .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+    transform: scale3d(1, 1, 1);
+  }
+
+  .navLink{
+    color: white; padding-right: 30px;
+    font-size: 20px;
+  }
+
+  .titleDiv{
+    background-color: white;
+    height: 80px;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  
+  .card-4 {
+    box-shadow: 0 6px 8px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+
+  .mobile-header{
+    font-size: 40px; 
+    padding: 15px; 
+    font-weight: 200;
+  }
+
+  .card-row {
+    padding-bottom: 30px;
+     padding-top: 30px;
+  }
+
+  .side-banner {
+    font-size: 40px;
+  }
+
+  .navHeader{
+    font-size: 30px;
+    margin-right: 40px;
+  }
+
+  .hoverLink:hover {
+    color: #627482;
+  }
+  
+
+  /* mobile css  */
+
+  @media screen and (max-width: 480px) {
+    .item {
+    padding-right: 0px;
+    padding-top: 5%;
+    padding-left: 10%!important
+    }
+
+    .mobile-header {
+      font-size: 30px!important;
+      padding: 15px;
+  }
+
+  .card-row{
+    padding-top: 0px;
+  }
+
+  .display-4 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+.side-banner {
+  font-size: 29px !important;
+}
+
+.chartResizing{
+  display: block;
+  height: 170px;
+}
+.lineGraphHeader {
+  font-size: 20px;
+}
+
+.mobileDisplay{
+  display: none;
+}
+
+.navHeader{
+  font-size: 20px;
+  text-align: center;
+}
+  }

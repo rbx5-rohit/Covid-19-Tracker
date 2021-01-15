@@ -1,0 +1,11 @@
+.spanHamBurger{
+    display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #f1f1f1;
+  border-radius: 3px;
+  
+}

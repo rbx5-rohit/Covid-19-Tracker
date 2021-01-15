@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row" style="padding-bottom: 30px; padding-top: 30px;">
+    <div class="col-md-12 col-sm-12">
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <div></div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Select State For Hospitals and Bed Availability</label>
+            <select (change)="selectChanged(selectedStateName)" [(ngModel)]="selectedStateName" class="form-control"
+              id="exampleFormControlSelect1">
+              <option *ngFor="let statename of regionalHospitalAndBedData.state">{{statename}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-12 item" style="text-align: center; padding-right: 30px;">
+      <div class="card item-card card-block infectedCardHover  card-4" style="border: none;">
+        <div class="card-body card-body text-dark">
+          <h4>Rural Hospitals & Beds</h4>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th scope="row">Rural Hospitals</th>
+                <td>{{regionalData.ruralHospitals}} </td>
+              </tr>
+              <tr>
+                <th scope="row">Rural Beds</th>
+                <td>{{regionalData.ruralBeds}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-12 item" style="text-align: center; padding-right: 30px;">
+      <div class="card item-card card-block RecoveredCardHover card-4" style="border: none;">
+        <div class="card-body card-body text-dark">
+          <h4>Urban Hospitals & Beds</h4>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th scope="row">Rural Hospitals</th>
+                <td>{{regionalData.urbanHospitals}} </td>
+              </tr>
+              <tr>
+                <th scope="row">Rural Beds</th>
+                <td>{{regionalData.urbanBeds}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-12 item" style="text-align: center; padding-right: 30px;">
+      <div class="card item-card card-block deathCardHover  card-4" style="border: none;">
+        <div class="card-body card-body text-dark">
+          <h4>Total Hospitals & Beds</h4>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th scope="row">Total Hospitals</th>
+                <td>{{regionalData.totalHospitals}} </td>
+              </tr>
+              <tr>
+                <th scope="row">Total Beds</th>
+                <td>{{regionalData.totalBeds}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
